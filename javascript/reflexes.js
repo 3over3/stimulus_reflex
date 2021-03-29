@@ -98,11 +98,11 @@ export const performOperations = data => {
       reflexes[reflexId].pendingOperations = totalOperations
       reflexes[reflexId].completedOperations = 0
       CableReady.perform(reflexOperations)
+      // run piggy back operations after stimulus reflex behavior
+      setTimeout(() => CableReady.perform(data.operations), 100);
     }
   }
 
-  // run piggy back operations after stimulus reflex behavior
-  CableReady.perform(data.operations)
 }
 
 export const registerReflex = data => {
